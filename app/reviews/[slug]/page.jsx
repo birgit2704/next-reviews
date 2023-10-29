@@ -1,7 +1,14 @@
 import Heading from "@/app/components/Heading";
 import { getReview } from "@/lib/review";
 
-const StardewValleyPage = async ({ params: { slug } }) => {
+export async function generateMetadata({ params: { slug } }) {
+  const review = await getReview(slug);
+  return {
+    title: review.title,
+  };
+}
+
+const ReviewPage = async ({ params: { slug } }) => {
   const { title, date, image, body } = await getReview(slug);
   return (
     <>
@@ -22,4 +29,4 @@ const StardewValleyPage = async ({ params: { slug } }) => {
   );
 };
 
-export default StardewValleyPage;
+export default ReviewPage;
