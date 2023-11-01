@@ -1,27 +1,23 @@
 import React from "react";
-import Link from "next/link";
+import NavLink from "./NavLink";
 
 const Navbar = () => {
   return (
     <nav>
       <ul className="flex gap-2">
         <li>
-          <Link
-            href="/"
-            className="text-orange-800 hover:underline font-orbitron font-bold"
-          >
-            Indie Gamer
-          </Link>
+          <NavLink href="/">Indie Gamer</NavLink>
         </li>
+
         <li className="ml-auto">
-          <Link href="/about" className="text-orange-800 hover:underline">
-            About
-          </Link>
+          <NavLink href="/reviews" className="text-orange-800 hover:underline">
+            Reviews
+          </NavLink>
         </li>
         <li>
-          <Link href="/reviews" className="text-orange-800 hover:underline">
-            Reviews
-          </Link>
+          <NavLink href="/about" className="text-orange-800 hover:underline">
+            About
+          </NavLink>
         </li>
       </ul>
     </nav>
