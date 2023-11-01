@@ -2,16 +2,30 @@ import Heading from "@/app/components/Heading";
 import ShareLinkButton from "@/app/components/ShareLinkButton";
 import { getReview } from "@/lib/review";
 import Image from "next/image";
+import { notFound } from "next/navigation";
+
+export async function generateStaticParams() {
+  const slugs = await getSlugs();
+  return slugs.map((slug) => ({ slug }));
+}
 
 export async function generateMetadata({ params: { slug } }) {
   const review = await getReview(slug);
+  if (!review) {
+    notFound();
+  }
   return {
     title: review.title,
   };
 }
 
+export const dynamic = "force-dynamic";
+
 const ReviewPage = async ({ params: { slug } }) => {
   const { title, date, image, body, subtitle } = await getReview(slug);
+  if (!review) {
+    notFound();
+  }
   return (
     <>
       <Heading>{title}</Heading>
