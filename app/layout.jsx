@@ -12,7 +12,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en" className={`${orbitron.variable} ${exo2.variable}`}>
-      <body className="bg-orange-50 flex flex-col min-h-screen px-4 py-2">
+      <body className="bg-orange-50 flex flex-col min-h-screen px-4 py-2 mx-auto max-w-5xl">
         <header>
           <Navbar />
         </header>
