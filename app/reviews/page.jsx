@@ -3,6 +3,7 @@ import Link from "next/link";
 import Heading from "../components/Heading";
 import { getReviews } from "@/lib/review";
 import Paginationbar from "../components/Paginationbar";
+import Searchbox from "../components/Searchbox";
 
 export const metadata = {
   title: "Reviews",
@@ -12,11 +13,14 @@ const ReviewsPage = async ({ searchParams }) => {
   const page = parsePageParam(searchParams.page);
   const pageSize = 6;
   const { reviews, pageCount } = await getReviews(pageSize, page);
-
+  // console.log(reviews.map(({ slug, title }) => ({ slug, title })));
   return (
     <>
       <Heading>Reviews</Heading>
-      <Paginationbar page={page} pageCount={pageCount} href="reviews/" />
+      <div className="flex justify-between pb-3 pr-12">
+        <Paginationbar page={page} pageCount={pageCount} href="reviews/" />
+        <Searchbox />
+      </div>
       <p>Here we'll list all the reviews</p>
       <ul className="flex flex-wrap flex-row gap-3">
         {reviews.map((review, index) => (

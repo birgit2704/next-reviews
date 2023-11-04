@@ -3,7 +3,7 @@ import Link from "next/link";
 
 const Paginationbar = ({ page, pageCount, href }) => {
   return (
-    <div className="flex gap-2 pb-3 items-center">
+    <div className="flex gap-2 items-center">
       <PaginationLink enabled={page > 1} href={`${href}?page=${page - 1}`}>
         &lt;
         <p className="sr-only">previous page</p>
