@@ -13,13 +13,13 @@ const ReviewsPage = async ({ searchParams }) => {
   const page = parsePageParam(searchParams.page);
   const pageSize = 6;
   const { reviews, pageCount } = await getReviews(pageSize, page);
-  const searchableReviews = await getSearchableReviews();
+
   return (
     <>
       <Heading>Reviews</Heading>
       <div className="flex justify-between pb-3 pr-12">
         <Paginationbar page={page} pageCount={pageCount} href="reviews/" />
-        <Searchbox reviews={searchableReviews} />
+        <Searchbox />
       </div>
       <p>Here we'll list all the reviews</p>
       <ul className="flex flex-wrap flex-row gap-3">
